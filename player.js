@@ -2,6 +2,28 @@ var inquirer = require('inquirer');
 
 var game = require('./game.source');
 
+var questions = [];
+
+function createQuestions () {
+	for( var nodeName in game.nodes){
+		questions.push({
+					type: 'list',
+					name: game.nodes[nodeName].title,
+					message: game.nodes[nodeName].text,
+					choices: game.nodes[nodeName].getConnectionStrings()
+				});
+		
+	}
+}
+
+createQuestions();
+// console.log(questions);
+inquirer.prompt(questions, function(answers){
+	// if(answers.name)
+	console.log('These are some answers', answers);
+});
+
+
 /*
 
 This file has no test specs. It might be a tricky one. You need to look at 
