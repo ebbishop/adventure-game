@@ -21,14 +21,14 @@ Game.prototype.addNode = function(title, text){
 	return newNode;
 }
 
+// not currently in use??
 Game.prototype.getNode = function(title) {
 	return this.nodes[title];
 }
 
-Game.prototype.connect = function(nextNode, condition){
-	this.startingPoint.connect(nextNode, condition)
-	//this.startingPoint
-	//<some node>>.connect()
+Game.prototype.connect = function(currentNodeTitle, nextNode, condition){
+	var currentNode = this.getNode(currentNodeTitle);
+	currentNode.connect(nextNode, condition);
 }
 
 Game.prototype.hasNode = function(title) {
